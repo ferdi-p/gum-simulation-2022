@@ -1,0 +1,224 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7961,        216]
+NotebookOptionsPosition[      6907,        188]
+NotebookOutlinePosition[      7306,        204]
+CellTagsIndexPosition[      7263,        201]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[{
+ "Supplementary code for simulations of ",
+ StyleBox["D. suzukii",
+  FontSlant->"Italic"],
+ " population dynamics in\n\[OpenCurlyDoubleQuote]Large-scale open field \
+trials in California and Oregon to evaluate the potential use of a new \
+behavioral control system for Drosophila suzukii Matsumura (Diptera: \
+Drosophilidae)\[CloseCurlyDoubleQuote]\nby Tait et al. 2022\nContact for \
+code: ferdinand.pfab@gmail.com\n\nThis file derives the insecticide induced \
+mortality rates."
+}], "Subsection",
+ CellChangeTimes->{{3.8601906058990355`*^9, 3.8601907865052767`*^9}, {
+  3.8624829872297096`*^9, 3.8624830011991463`*^9}, {3.8624831904426794`*^9, 
+  3.862483255365848*^9}, {3.8624856093273535`*^9, 3.862485609994108*^9}, {
+  3.879608486723729*^9, 
+  3.87960850388636*^9}},ExpressionUUID->"3a27bfe3-aba2-4f6b-88b1-\
+4a9acf4aee6c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "spinosad", " ", "mortality", " ", "probabilities", " ", "in", " ", "6", 
+     " ", "h", " ", "for", " ", "egg"}], ",", " ", "larvae", ",", " ", 
+    RowBox[{"pupae", " ", "and", " ", 
+     RowBox[{"adults", ".", " ", "Mermer"}], " ", "et", " ", "al", " ", 
+     "2020."}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"mortalities", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"e", "->", ".828"}], ",", 
+       RowBox[{"l", "->", ".759"}], ",", 
+       RowBox[{"p", "->", ".997"}], ",", 
+       RowBox[{"a", "->", ".948"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"halflife", " ", "time", " ", "of", " ", "spinosad"}], ",", " ", 
+     RowBox[{"Abdelfatah", " ", "et", " ", "al", " ", "2020"}]}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"halflife", "=", "0.3667"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"calculate", " ", "spinosad", " ", "decay", " ", "rate"}], "*)"}],
+    "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"decay", "=", 
+     RowBox[{
+      RowBox[{"Log", "[", "2", "]"}], "/", "halflife"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "the", " ", "time", " ", "of", " ", "the", " ", "mortality", " ", 
+      "assay"}], ",", " ", 
+     RowBox[{"in", " ", "days"}]}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"experimenttime", "=", "0.25"}], ";"}], "\n", 
+   RowBox[{"(*", 
+    RowBox[{"instant", " ", "mortality", " ", "rates"}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"InstantMortality", "[", "probability_", "]"}], ":=", 
+     RowBox[{"-", "  ", 
+      FractionBox[
+       RowBox[{"decay", " ", 
+        RowBox[{"Log", "[", 
+         RowBox[{"1", "-", "probability"}], "]"}]}], 
+       RowBox[{"1", "-", 
+        SuperscriptBox["\[ExponentialE]", 
+         RowBox[{
+          RowBox[{"-", "decay"}], " ", "experimenttime"}]]}]]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"instantMortalities", "=", 
+    RowBox[{"MapAt", "[", 
+     RowBox[{"InstantMortality", ",", "mortalities", ",", 
+      RowBox[{"{", 
+       RowBox[{"All", ",", "2"}], "}"}]}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.8791937210778675`*^9, 3.879193732642819*^9}, {
+  3.8791943062576056`*^9, 3.879194316252124*^9}, {3.8791943983930283`*^9, 
+  3.879194405281139*^9}, {3.8796083016015763`*^9, 3.879608436885743*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"24e99bf8-f829-4298-a2ad-7a850f130fdc"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"e", "\[Rule]", "8.835234856394788`"}], ",", 
+   RowBox[{"l", "\[Rule]", "7.1422207196768674`"}], ",", 
+   RowBox[{"p", "\[Rule]", "29.157692184345702`"}], ",", 
+   RowBox[{"a", "\[Rule]", "14.839547616810076`"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.879194545191129*^9, 3.8796084388877172`*^9, 
+  3.879608511479974*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"49365f22-f619-4c8a-9e10-5dfd4e66668f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"mean", " ", "pesticide", " ", 
+    RowBox[{"concentration", ":", " ", 
+     RowBox[{"application", " ", "every", " ", "three", " ", "days"}]}]}], 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"meanpestidice", "=", 
+   RowBox[{
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{
+        RowBox[{"-", "decay"}], " ", "t"}]], ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "0", ",", "\[Infinity]"}], "}"}]}], "]"}], "/", 
+    "3"}]}]}]], "Input",
+ CellChangeTimes->{{3.879194603981338*^9, 3.8791946502377567`*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"04ef2bc0-36a4-4735-8b1c-6c1de1cc05a5"],
+
+Cell[BoxData["0.17634542383132762`"], "Output",
+ CellChangeTimes->{3.879194650769229*^9, 3.8796084469295235`*^9, 
+  3.8796085116046944`*^9},
+ CellLabel->"Out[16]=",ExpressionUUID->"4aaed743-4b83-44fc-ac89-b61eb20144fe"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "factor", " ", "to", " ", "reduce", " ", "lab", " ", "derived", " ", 
+     "mortalities", " ", "for", " ", "field", " ", "settings"}], ",", " ", 
+    RowBox[{"from", " ", "Mermer", " ", "et", " ", "al", " ", 
+     RowBox[{"(", "submitted", ")"}]}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"reducePesticides", "=", "0.02"}], ";"}], "\n", 
+   RowBox[{"finalMortalities", "=", 
+    RowBox[{"MapAt", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"reducePesticides", " ", "meanpestidice", " ", "#"}], "&"}], 
+      ",", "instantMortalities", ",", 
+      RowBox[{"{", 
+       RowBox[{"All", ",", "2"}], "}"}]}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.879194574718878*^9, 3.8791945781163034`*^9}, {
+   3.879194656295899*^9, 3.8791946892645655`*^9}, 3.879608456712613*^9},
+ CellLabel->"In[17]:=",ExpressionUUID->"05492923-ec7a-496b-a834-39b4d57293f3"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"e", "\[Rule]", "0.031161064708005157`"}], ",", 
+   RowBox[{"l", "\[Rule]", "0.02518995879816614`"}], ",", 
+   RowBox[{"p", "\[Rule]", "0.10283651172383663`"}], ",", 
+   RowBox[{"a", "\[Rule]", "0.05233772627903081`"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.8791947333621745`*^9, 3.8796084575476055`*^9, 
+  3.8796085116312203`*^9},
+ CellLabel->"Out[18]=",ExpressionUUID->"610900c0-fe4b-4d5e-9368-b4eae1ec3359"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{478, 461},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.0 for Microsoft Windows (64-bit) (February 4, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"ce6c1c63-6fad-4770-9ef9-216246b93858"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 844, 16, 324, "Subsection",ExpressionUUID->"3a27bfe3-aba2-4f6b-88b1-4a9acf4aee6c"],
+Cell[CellGroupData[{
+Cell[1449, 42, 2560, 65, 357, "Input",ExpressionUUID->"24e99bf8-f829-4298-a2ad-7a850f130fdc"],
+Cell[4012, 109, 454, 9, 32, "Output",ExpressionUUID->"49365f22-f619-4c8a-9e10-5dfd4e66668f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4503, 123, 698, 18, 70, "Input",ExpressionUUID->"04ef2bc0-36a4-4735-8b1c-6c1de1cc05a5"],
+Cell[5204, 143, 219, 3, 32, "Output",ExpressionUUID->"4aaed743-4b83-44fc-ac89-b61eb20144fe"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5460, 151, 952, 22, 143, "Input",ExpressionUUID->"05492923-ec7a-496b-a834-39b4d57293f3"],
+Cell[6415, 175, 464, 9, 99, "Output",ExpressionUUID->"610900c0-fe4b-4d5e-9368-b4eae1ec3359"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
