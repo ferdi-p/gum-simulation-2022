@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     61668,       1139]
-NotebookOptionsPosition[     60987,       1117]
-NotebookOutlinePosition[     61448,       1135]
-CellTagsIndexPosition[     61405,       1132]
+NotebookDataLength[     61772,       1137]
+NotebookOptionsPosition[     61098,       1116]
+NotebookOutlinePosition[     61552,       1133]
+CellTagsIndexPosition[     61509,       1130]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -27,12 +27,12 @@ Cell[TextData[{
  " population dynamics in\n\[OpenCurlyDoubleQuote]Large-scale open field \
 trials in California and Oregon to evaluate the potential use of a new \
 behavioral control system for Drosophila suzukii Matsumura (Diptera: \
-Drosophilidae)\[CloseCurlyDoubleQuote]\nby Tait et al. (2022)\nContact for \
+Drosophilidae)\[CloseCurlyDoubleQuote]\nby Tait et al. (2023)\nContact for \
 code: ferdinand.pfab@gmail.com\n\nThis file loads the temperature data"
 }], "Subsection",
  CellChangeTimes->{{3.8601906058990355`*^9, 3.8601907302942877`*^9}, 
-   3.862492763950409*^9, {3.862492794575959*^9, 
-   3.8624928041153064`*^9}},ExpressionUUID->"97222b22-555f-45ae-bedf-\
+   3.862492763950409*^9, {3.862492794575959*^9, 3.8624928041153064`*^9}, 
+   3.8850374109713287`*^9},ExpressionUUID->"97222b22-555f-45ae-bedf-\
 1a0aee022a9a"],
 
 Cell[CellGroupData[{
@@ -53,12 +53,11 @@ Cell[BoxData[
      RowBox[{"Import", "[", 
       RowBox[{
        RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
-       "\"\<Oregon Aurora Weather 2020.xlsx\>\""}], "]"}]}], ";"}], 
-   "\[IndentingNewLine]", 
+       "\"\<Oregon Aurora Weather 2020.xlsx\>\""}], "]"}]}], ";"}], "\n", 
    RowBox[{"(*", 
     RowBox[{
     "convert", " ", "to", " ", "list", " ", "of", " ", "daily", " ", "mean", 
-     " ", "temperatures"}], "*)"}], "\n", 
+     " ", "temperatures"}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"meantemplist", "=", 
      RowBox[{"Mean", "/@", 
@@ -78,12 +77,12 @@ Cell[BoxData[
          RowBox[{"All", ",", 
           RowBox[{"{", 
            RowBox[{"2", ",", "3"}], "}"}]}], "]"}], "]"}], "]"}]}]}], ";"}], 
-   "\[IndentingNewLine]", 
+   "\n", 
    RowBox[{"(*", 
     RowBox[{
     "functions", " ", "to", " ", "convert", " ", "from", " ", "Fahrenheit", 
      " ", "to", " ", "Celsius", " ", "and", " ", "vice", " ", "versa"}], 
-    "*)"}], "\n", 
+    "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{
      RowBox[{"celsius", "[", "fahrenheit_", "]"}], ":=", 
@@ -114,11 +113,11 @@ Cell[BoxData[
      " ", "to", " ", "start", " ", "the", " ", "temperature", " ", 
      "function"}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"adddays", "=", "0"}], ";"}], "\n", 
+    RowBox[{"adddays", "=", "0"}], ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
     "interpolation", " ", "of", " ", "the", " ", "mean", " ", 
-     "temperatures"}], "*)"}], "\[IndentingNewLine]", 
+     "temperatures"}], "*)"}], "\n", 
    RowBox[{
     RowBox[{"w", "=", 
      RowBox[{"Interpolation", "[", 
@@ -139,29 +138,28 @@ Cell[BoxData[
              RowBox[{"N", "@", 
               RowBox[{"weatherlist", "[", 
                RowBox[{"[", "1", "]"}], "]"}]}], ",", "adddays"}], "]"}], ",",
-            "weatherlist"}], "}"}], "]"}]}], "]"}], "]"}]}], ";"}], "\n", 
+            "weatherlist"}], "}"}], "]"}]}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{
     "total", " ", "number", " ", "of", " ", "days", " ", "we", " ", "have", 
-     " ", "temperature", " ", "data", " ", "for"}], "*)"}], 
-   "\[IndentingNewLine]", 
+     " ", "temperature", " ", "data", " ", "for"}], "*)"}], "\n", 
    RowBox[{
     RowBox[{"totaldays", "=", 
-     RowBox[{"Length", "[", "weatherlist", "]"}]}], ";"}], 
-   "\[IndentingNewLine]", 
+     RowBox[{"Length", "[", "weatherlist", "]"}]}], ";"}], "\n", 
    RowBox[{"(*", 
     RowBox[{"lengths", " ", "of", " ", "month", " ", "of", " ", "year"}], 
-    "*)"}], "\n", 
+    "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"monthlength", "=", 
      RowBox[{"{", 
       RowBox[{
       "31", ",", "28", ",", "31", ",", "30", ",", "31", ",", "30", ",", "31", 
        ",", "31", ",", "30", ",", "31", ",", "30", ",", "31"}], "}"}]}], 
-    ";"}], "\n", 
+    ";"}], "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{"names", " ", "of", " ", "months", " ", "of", " ", "year"}], 
-    "*)"}], "\[IndentingNewLine]", 
+    "*)"}], "\n", 
    RowBox[{
     RowBox[{"monthnames", "=", 
      RowBox[{"{", 
@@ -197,11 +195,11 @@ Cell[BoxData[
        RowBox[{"{", 
         RowBox[{"j", ",", "0", ",", 
          RowBox[{"endmonth", "-", "startmonth"}]}], "}"}]}], "]"}]}], ";"}], 
-   "\[IndentingNewLine]", 
+   "\n", 
    RowBox[{"(*", 
     RowBox[{
     "show", " ", "temperature", " ", "data", " ", "and", " ", "interpolation",
-      " ", "function"}], "*)"}], "\n", 
+      " ", "function"}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{"Show", "[", 
     RowBox[{
      RowBox[{"Plot", "[", 
@@ -277,7 +275,7 @@ Cell[BoxData[
    3.8601905441315145`*^9}, 3.8601917392455015`*^9, {3.8601917889254675`*^9, 
    3.8601918198159075`*^9}, 3.862492743383544*^9, {3.8624928167518215`*^9, 
    3.862492911870989*^9}},
- CellLabel->"In[33]:=",ExpressionUUID->"f93f689c-b2d3-4229-a415-56162fa0cd00"],
+ CellLabel->"In[1]:=",ExpressionUUID->"f93f689c-b2d3-4229-a415-56162fa0cd00"],
 
 Cell[BoxData[
  GraphicsBox[{{{{}, {}, 
@@ -1015,7 +1013,7 @@ mnlOBjRA+hGfkp44VUCwD9hm5v4zQKogK+x2OlVAyBDelVD7M0BaL7dFTzxV
 QDPjp1rS9zNACj5Dnyc+VUCP11RJbvQzQLtMz/j/P1VAeT4E9ibxM0CxeHWv
 
         "]]},
-      Annotation[#, "Charting`Private`Tag$14016#1"]& ]}, {}}, {{}, 
+      Annotation[#, "Charting`Private`Tag$12995#1"]& ]}, {}}, {{}, 
     {RGBColor[1, 0.5, 0], PointSize[Medium], AbsoluteThickness[1.6], 
      GeometricTransformationBox[InsetBox[
        FormBox[
@@ -1110,15 +1108,15 @@ D/6L8jx1o/9R7nc7zo/St1b1gxrMp39Qvvr0
    3.862492869670714*^9, 3.862492912705103*^9}, 3.862745966538149*^9, 
    3.8628347530573697`*^9, 3.8728221378205104`*^9, 3.8761311365264807`*^9, 
    3.876150450941819*^9, 3.8791718706285276`*^9, {3.8796085227618103`*^9, 
-   3.8796085292607718`*^9}},
- CellLabel->"Out[46]=",ExpressionUUID->"d3d58de2-d409-4fa2-a3b9-7814c8902355"]
+   3.8796085292607718`*^9}, 3.8850373393651285`*^9, 3.885037402202799*^9, 
+   3.8860754474592795`*^9, 3.886173873881443*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"5ae6f431-52c9-4a9a-a4d8-326e01983e73"]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{949, 461},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowSize->{949.5, 461.25},
+WindowMargins->{{Automatic, 132.75}, {64.5, Automatic}},
 TaggingRules-><|"TryRealOnly" -> False|>,
-Magnification:>1.2,
 FrontEndVersion->"13.0 for Microsoft Windows (64-bit) (February 4, 2022)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"57aa276b-4d16-4052-bc56-8ec2d89b1fe7"
@@ -1135,10 +1133,10 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 697, 13, 290, "Subsection",ExpressionUUID->"97222b22-555f-45ae-bedf-1a0aee022a9a"],
+Cell[580, 22, 721, 13, 216, "Subsection",ExpressionUUID->"97222b22-555f-45ae-bedf-1a0aee022a9a"],
 Cell[CellGroupData[{
-Cell[1302, 39, 10310, 240, 909, "Input",ExpressionUUID->"f93f689c-b2d3-4229-a415-56162fa0cd00"],
-Cell[11615, 281, 49344, 832, 390, "Output",ExpressionUUID->"d3d58de2-d409-4fa2-a3b9-7814c8902355"]
+Cell[1326, 39, 10301, 238, 678, "Input",ExpressionUUID->"f93f689c-b2d3-4229-a415-56162fa0cd00"],
+Cell[11630, 279, 49440, 833, 308, "Output",ExpressionUUID->"5ae6f431-52c9-4a9a-a4d8-326e01983e73"]
 }, Open  ]]
 }, Open  ]]
 }
